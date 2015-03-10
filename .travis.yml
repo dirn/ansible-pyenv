@@ -15,7 +15,7 @@ script:
   - ansible-playbook -i tests/inventory tests/tests.yml --connection=local --sudo
 
   # Check the files.
-  - grep -Fxq ~/.bashrc "$(pyenv init -)"
+  - grep -Fxq "$(pyenv init -)" ~/.bashrc
 
   # Check for idempotence.
   - >
