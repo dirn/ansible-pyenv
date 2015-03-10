@@ -8,7 +8,10 @@ An Ansible role to install [pyenv](https://github.com/yyuu/pyenv).
 Requirements
 ------------
 
-This role works on OS X and Debian-based OSes.
+This role works on OS X and Debian-based OSes. If using OS X, make sure you have
+[Homebrew](http://brew.sh/) installed before running the role. If you're looking
+for a role to handle it for you, check out
+[dirn.homebrew](https://github.com/dirn/ansible-homebrew).
 
 Role Variables
 --------------
