@@ -14,9 +14,8 @@ script:
   # Run the role.
   - ansible-playbook -i tests/inventory tests/tests.yml --connection=local --sudo
 
-  # Check for the files.
-  - ls ~/.pyenv/version
-  - ls ~/.python-version
+  # Check the files.
+  - grep -Fxq ~/.bashrc "$(pyenv init -)"
 
   # Check for idempotence.
   - >
