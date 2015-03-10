@@ -14,8 +14,8 @@
   dest: "{{ pyenv_root }}/version"
 
 - include: versions.yml
-  versions: "{{ pyenv_versions_local }}"
-  dest: "{{ pyenv_local_root }}/.python-version"
+  versions: "{{ pyenv_versions_project }}"
+  dest: "{{ pyenv_project_root }}/.python-version"
 
 - name: Add to run commands
   lineinfile: >
