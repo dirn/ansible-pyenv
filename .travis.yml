@@ -16,6 +16,8 @@ script:
 
   # Check the files.
   - grep -Fxq "$(pyenv init -)" ~/.bashrc
+  - grep -Fxq "3.4.3" ~/.pyenv/version
+  - grep -Fxq "2.7.9" ~/.python-version
 
   # Check for idempotence.
   - >
