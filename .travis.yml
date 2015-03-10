@@ -1,6 +1,10 @@
 language: python
 python: "2.7"
 
+os:
+  - linux
+  - osx
+
 install:
   - pip install ansible
 
