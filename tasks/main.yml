@@ -11,11 +11,11 @@
 
 - include: versions.yml
   versions: {{ pyenv_versions_default }}
-  dest: {{ pyenv_root }}/version
+  dest: "{{ pyenv_root }}/version"
 
 - include: versions.yml
   versions: {{ pyenv_versions_local }}
-  dest: {{ pyenv_local_root }}/.python-version
+  dest: "{{ pyenv_local_root }}/.python-version"
 
 - name: Add to run commands
   lineinfile: >
