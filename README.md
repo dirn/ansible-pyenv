@@ -1,5 +1,5 @@
-Role Name
-=========
+pyenv
+=====
 
 [![Build Status](https://travis-ci.org/dirn/ansible-pyenv.svg?branch=master)](https://travis-ci.org/dirn/ansible-pyenv)
 
