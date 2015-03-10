@@ -1,38 +1,86 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+[![Build Status](https://travis-ci.org/dirn/ansible-pyenv.svg?branch=master)](https://travis-ci.org/dirn/ansible-pyenv)
+
+An Ansible role to install [pyenv](https://github.com/yyuu/pyenv).
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role works on OS X and Debian-based OSes.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Several variables are available to configure the role.
+
+To set where pyenv will be installed:
+
+    pyenv_root: ~/.pyenv
+
+To set the location of your projects:
+
+    pyenv_project_root: '~'
+
+> This is useful if you want a different version of Python than you use
+> elsewhere.
+
+To specify the name of the run commands file that will initialize pyenv:
+
+    pyenv_runcom: ~/.bashrc
+
+To specify which versions of Python to install:
+
+    pyenv_versions: []
+
+To specify the default versions of Python available:
+
+    pyenv_versions_default: []
+
+To specify alternative default versions of Python available inside your projects
+root:
+
+    pyenv_versions_project: []
+
+> This is useful if you want a different version of Python than you use
+> elsewhere.
+
+To install [virtualenv](https://github.com/yyuu/pyenv-virtualenv) and
+[virtualenvwrapper](https://github.com/yyuu/pyenv-virtualenvwrapper):
+
+    pyenv_virtualenv: true
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None.
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+        - role: dirn.pyenv
+          pyenv_runcom: ~/.zshrc
+          pyenv_versions:
+            - 2.7.9
+            - 3.4.3
+            - pypy-2.5.0
+            - pypy3-2.4.0
+          pyenv_versions_default:
+            - 2.7.9
+            - pypy-2.5.0
+          pyenv_versions_project:
+            - 3.4.3
+            - pypy3-2.4.0
 
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+This role was created by [Andy Dirnberger](https://github.com/dirn).
