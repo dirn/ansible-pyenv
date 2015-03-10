@@ -1,0 +1,24 @@
+---
+- name: Install requirements
+  apt: pkg={{ item }} state=present
+  with_items:
+    - make
+    - build-essential
+    - libssl-dev
+    - zlib1g-dev
+    - libbz2-dev
+    - libreadline-dev
+    - libsqlite3-dev
+    - wget
+    - curl
+    - llvm
+
+- name: Install
+  git: repo=https://github.com/yyuu/pyenv.git dest={{ pyenv_root }}
+
+- name: Install virtualenv
+  git: repo=https://github.com/yyuu/{{ item }}.git dest={{ pyenv_root }}/plugins/{{ item }}
+  with_items:
+    - pyenv-virtualenv
+    - pyenv-virtualenvwrapper
+  when: pyenv_virtualenv

@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  remote_user: root
+  roles:
+    - role: ansible-pyenv
+      pyenv_version: [3.4.3, 2.7.9]
+      pyenv_versions_default: [3.4.3]
+      pyenv_version_local: [2.7.9]

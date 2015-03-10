@@ -1,0 +1,44 @@
+---
+- include: debian.yml
+  when: ansible_os_family == 'Debian'
+
+- include: osx.yml
+  when: ansible_os_family == 'Darwin'
+
+- name: Install versions
+  command: creates={{ pyenv_root }}/versions/{{ item }} pyenv install {{ item }}
+  with_items: pyenv_versions
+
+- include: versions.yml
+  versions: {{ pyenv_versions_default }}
+  dest: {{ pyenv_root }}/version
+
+- include: versions.yml
+  versions: {{ pyenv_versions_local }}
+  dest: {{ pyenv_local_root }}/.python-version
+
+- name: Add to run commands
+  lineinfile: >
+    dest={{ pyenv_runcom }}
+    state=present
+    create=yes
+    line="{{ item }}"
+  with_items:
+    - if which pyenv > /dev/null; then
+    - "    export PYENV_ROOT=\\\"$HOME/.pyenv\\\""
+    - "    export PATH=\\\"$PYENV_ROOT/bin:$PATH\\\""
+    - "    eval \\\"$(pyenv init -)\\\""
+    - "    pyenv virtualenvwrapper_lazy"
+    - "fi # pyenv"
+  when: pyenv_runcom
+
+- name: Configure virtualenvwrapper
+  lineinfile: >
+    dest={{ pyenv_runcom }}
+    state=present
+    create=yes
+    line="{{ item }}"
+  with_items:
+    - export WORKON_HOME=\"$HOME/.virtualenvs\"
+    - export PROJECT_HOME=\"$HOME/development\"
+  when: pyenv_virtualenv and pyenv_runcom

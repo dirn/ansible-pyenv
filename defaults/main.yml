@@ -1,0 +1,11 @@
+---
+pyenv_root: ~/{{ ansible_ssh_user }}/.pyenv
+pyenv_local_root: '~'
+
+pyenv_runcom: ~/.bashrc
+
+pyenv_versions: []
+pyenv_versions_default: []
+pyenv_versions_local: []
+
+pyenv_virtualenv: true

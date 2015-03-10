@@ -1,0 +1,10 @@
+---
+- name: Install
+  homebrew: name=pyenv state=present
+
+- name: Install virtualenv
+  homebrew: name={{ item }} state=present
+  with_items:
+    - pyenv-virtualenv
+    - pyenv-virtualenvwrapper
+  when: pyenv_virtualenv
