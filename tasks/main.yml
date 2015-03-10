@@ -10,11 +10,11 @@
   with_items: pyenv_versions
 
 - include: versions.yml
-  versions: {{ pyenv_versions_default }}
+  versions: "{{ pyenv_versions_default }}"
   dest: "{{ pyenv_root }}/version"
 
 - include: versions.yml
-  versions: {{ pyenv_versions_local }}
+  versions: "{{ pyenv_versions_local }}"
   dest: "{{ pyenv_local_root }}/.python-version"
 
 - name: Add to run commands
