@@ -28,24 +28,16 @@
     - "    export PYENV_ROOT=\\\"$HOME/.pyenv\\\""
     - "    export PATH=\\\"$PYENV_ROOT/bin:$PATH\\\""
     - "    eval \\\"$(pyenv init -)\\\""
+    - "fi # pyenv"
 
 - name: Add virtualenv to run commands
   lineinfile: >
     dest={{ pyenv_runcom }}
     state=present
     create=yes
+    insertbefore="fi # pyenv"
     line="    pyenv virtualenvwrapper_lazy"
   when: pyenv_virtualenv
-
-- name: Add to run commands (finish)
-  lineinfile: >
-    dest={{ pyenv_runcom }}
-    state=present
-    create=yes
-    line="{{ item }}"
-    before="fi # pyenv"
-  with_items:
-    - "fi # pyenv"
 
 - name: Configure virtualenvwrapper
   lineinfile: >
