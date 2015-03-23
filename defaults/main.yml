@@ -5,7 +5,7 @@ pyenv_project_root: '~'
 pyenv_runcom: ~/.bashrc
 
 pyenv_versions: []
-pyenv_versions_default: []
-pyenv_versions_project: []
+pyenv_default_versions: []
+pyenv_project_versions: []
 
 pyenv_virtualenv: true

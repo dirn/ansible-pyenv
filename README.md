@@ -39,12 +39,12 @@ To specify which versions of Python to install:
 
 To specify the default versions of Python available:
 
-    pyenv_versions_default: []
+    pyenv_default_versions: []
 
 To specify alternative default versions of Python available inside your projects
 root:
 
-    pyenv_versions_project: []
+    pyenv_project_versions: []
 
 > This is useful if you want a different version of Python than you use
 > elsewhere.
@@ -71,10 +71,10 @@ Example Playbook
             - 3.4.3
             - pypy-2.5.0
             - pypy3-2.4.0
-          pyenv_versions_default:
+          pyenv_default_versions:
             - 2.7.9
             - pypy-2.5.0
-          pyenv_versions_project:
+          pyenv_project_versions:
             - 3.4.3
             - pypy3-2.4.0
 
