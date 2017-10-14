@@ -1,6 +1,8 @@
 pyenv
 =====
 
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
 [![Build Status](https://travis-ci.org/dirn/ansible-pyenv.svg?branch=master)](https://travis-ci.org/dirn/ansible-pyenv)
 
 An Ansible role to install [pyenv](https://github.com/yyuu/pyenv).
